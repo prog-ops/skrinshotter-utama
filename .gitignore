@@ -1,0 +1,78 @@
+# ============================================
+# RUST / CARGO BUILD ARTIFACTS
+# ============================================
+/target
+**/target/
+*.rs.bk
+*.rlib
+*.rmeta
+*.d
+*.pdb
+*.lib
+*.exp
+*.ilk
+*.idb
+
+# ============================================
+# EXECUTABLES & BINARIES
+# ============================================
+*.exe
+*.dll
+*.msi
+
+# ============================================
+# USER DATA & BACKUPS (CRITICAL PII PROTECTION)
+# ============================================
+*.zip
+*.db
+*.db-shm
+*.db-wal
+*.settings
+*_extracted/
+*Extracted/
+*.csv
+
+# ============================================
+# CACHE, TEMPORARY & LOG FILES
+# ============================================
+.cargo/
+*.tmp
+*.temp
+tmp/
+temp/
+logs/
+*.log
+
+# ============================================
+# ENVIRONMENT VARIABLES & SECRETS
+# ============================================
+.env
+.env.local
+.env.*.local
+*.env
+*.pem
+*.key
+*.p12
+*.pfx
+
+# ============================================
+# IDE & EDITOR FILES
+# ============================================
+.idea/
+*.iml
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# ============================================
+# OS-SPECIFIC FILES
+# ============================================
+.DS_Store
+Thumbs.db
+desktop.ini
