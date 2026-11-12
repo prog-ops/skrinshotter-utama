@@ -96,8 +96,7 @@ impl SettingsWindow {
         self.surface.render(gpu, |ctx| {
             egui::CentralPanel::default()
                 .frame(
-                    egui::Frame::NONE
-                        .fill(Color32::from_rgb(24, 26, 32))
+                    egui::Frame::central_panel(&ctx.style())
                         .inner_margin(egui::Margin::same(18)),
                 )
                 .show(ctx, |ui| {
@@ -111,7 +110,7 @@ impl SettingsWindow {
                     ui.label(
                         RichText::new(hk_text)
                             .small()
-                            .color(Color32::from_rgb(125, 211, 252)),
+                            .color(Color32::from_rgb(2, 132, 199)),
                     );
                     ui.separator();
                     ui.add_space(6.0);
@@ -121,8 +120,8 @@ impl SettingsWindow {
                         RichText::new(
                             "Automatically fills the Author field after every screenshot capture.",
                         )
-                        .small()
-                        .color(Color32::from_gray(160)),
+                            .small()
+                            .color(Color32::from_gray(100)),
                     );
                     ui.add_sized(
                         [ui.available_width(), 28.0],
@@ -171,8 +170,8 @@ impl SettingsWindow {
                                 .strong()
                                 .color(Color32::WHITE),
                         )
-                        .fill(Color32::from_rgb(37, 99, 235))
-                        .min_size(Vec2::new(165.0, 32.0));
+                            .fill(Color32::from_rgb(37, 99, 235))
+                            .min_size(Vec2::new(165.0, 32.0));
 
                         if ui.add(btn_save).clicked() {
                             settings.default_author = draft_author.trim().to_string();
@@ -198,9 +197,9 @@ impl SettingsWindow {
                     if let Some((msg, is_err)) = &status_note {
                         ui.add_space(8.0);
                         let color = if *is_err {
-                            Color32::from_rgb(248, 113, 113)
+                            Color32::from_rgb(220, 38, 38)
                         } else {
-                            Color32::from_rgb(74, 222, 128)
+                            Color32::from_rgb(22, 163, 74)
                         };
                         ui.label(RichText::new(msg).small().color(color));
                     }

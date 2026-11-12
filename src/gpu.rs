@@ -261,11 +261,10 @@ impl EguiWindowSurface {
 }
 
 fn configure_visuals(ctx: &egui::Context) {
-    let mut visuals = egui::Visuals::dark();
+    ctx.set_theme(egui::ThemePreference::Light);
+    let mut visuals = egui::Visuals::light();
     visuals.window_corner_radius = egui::CornerRadius::same(8);
-    visuals.widgets.noninteractive.bg_fill = egui::Color32::from_rgb(24, 26, 32);
-    visuals.panel_fill = egui::Color32::from_rgb(24, 26, 32);
-    ctx.set_visuals(visuals);
+    ctx.set_visuals_of(egui::Theme::Light, visuals);
 }
 
 #[cfg(test)]
