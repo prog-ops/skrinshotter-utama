@@ -291,14 +291,14 @@ impl OverlayWindow {
                         painter.rect_stroke(
                             sel.expand(1.0),
                             0.0,
-                            Stroke::new(1.0, Color32::from_black_alpha(190)),
+                            Stroke::new(1.0_f32, Color32::from_black_alpha(190)),
                             egui::StrokeKind::Outside,
                         );
                         let accent = Color32::from_rgb(56, 189, 248);
                         painter.rect_stroke(
                             sel,
                             0.0,
-                            Stroke::new(2.0, accent),
+                            Stroke::new(2.0_f32, accent),
                             egui::StrokeKind::Middle,
                         );
 
@@ -313,7 +313,7 @@ impl OverlayWindow {
                             painter.rect_stroke(
                                 handle,
                                 1.5,
-                                Stroke::new(1.0, accent),
+                                Stroke::new(1.0_f32, accent),
                                 egui::StrokeKind::Middle,
                             );
                         }
@@ -364,22 +364,22 @@ impl OverlayWindow {
                                     first,
                                     6.0,
                                     5.0,
-                                    Stroke::new(1.5, Color32::from_rgba_unmultiplied(52, 211, 153, 185)),
+                                    Stroke::new(1.5_f32, Color32::from_rgba_unmultiplied(52, 211, 153, 185)),
                                 );
                             }
 
                             // Crisp dual-stroke lasso trail (dark outer halo + bright inner line)
                             painter.add(Shape::line(
                                 path.clone(),
-                                Stroke::new(4.0, Color32::from_black_alpha(200)),
+                                Stroke::new(4.0_f32, Color32::from_black_alpha(200)),
                             ));
-                            painter.add(Shape::line(path, Stroke::new(2.2, accent)));
+                            painter.add(Shape::line(path, Stroke::new(2.2_f32, accent)));
                         }
 
                         // Anchor dot at start point
                         let start_pt = lasso_points[0];
                         painter.circle_filled(start_pt, 5.0, Color32::WHITE);
-                        painter.circle_stroke(start_pt, 5.0, Stroke::new(2.0, accent));
+                        painter.circle_stroke(start_pt, 5.0, Stroke::new(2.0_f32, accent));
 
                         let px_w = ((focus_box.width() / screen_rect.width().max(1.0))
                             * img_w as f32)
@@ -405,7 +405,7 @@ impl OverlayWindow {
                                         Color32::from_rgba_unmultiplied(52, 211, 153, 110)
                                     }
                                 };
-                                let guide_stroke = Stroke::new(1.0, guide_color);
+                                let guide_stroke = Stroke::new(1.0_f32, guide_color);
                                 painter.line_segment(
                                     [
                                         Pos2::new(screen_rect.min.x, pos.y),
@@ -434,7 +434,7 @@ impl OverlayWindow {
                                 };
                                 egui::Frame::NONE
                                     .fill(Color32::from_rgba_unmultiplied(15, 23, 42, 238))
-                                    .stroke(Stroke::new(1.2, border_col))
+                                    .stroke(Stroke::new(1.2_f32, border_col))
                                     .corner_radius(10.0)
                                     .inner_margin(egui::Margin::symmetric(14, 9))
                                     .show(ui, |ui| {
@@ -452,12 +452,12 @@ impl OverlayWindow {
                                                         Color32::from_gray(185)
                                                     }),
                                             )
-                                            .fill(if is_rect {
-                                                Color32::from_rgb(2, 132, 199)
-                                            } else {
-                                                Color32::from_rgb(30, 41, 59)
-                                            })
-                                            .corner_radius(6.0);
+                                                .fill(if is_rect {
+                                                    Color32::from_rgb(2, 132, 199)
+                                                } else {
+                                                    Color32::from_rgb(30, 41, 59)
+                                                })
+                                                .corner_radius(6.0);
 
                                             if ui.add(rect_btn).clicked() && !is_rect {
                                                 mode = CaptureMode::Rectangle;
@@ -474,12 +474,12 @@ impl OverlayWindow {
                                                         Color32::from_gray(185)
                                                     }),
                                             )
-                                            .fill(if is_free {
-                                                Color32::from_rgb(52, 211, 153)
-                                            } else {
-                                                Color32::from_rgb(30, 41, 59)
-                                            })
-                                            .corner_radius(6.0);
+                                                .fill(if is_free {
+                                                    Color32::from_rgb(52, 211, 153)
+                                                } else {
+                                                    Color32::from_rgb(30, 41, 59)
+                                                })
+                                                .corner_radius(6.0);
 
                                             if ui.add(free_btn).clicked() && !is_free {
                                                 mode = CaptureMode::Freeform;

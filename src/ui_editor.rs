@@ -205,7 +205,7 @@ impl EditorWindow {
                             ui.painter().rect_stroke(
                                 rect,
                                 4.0,
-                                Stroke::new(if is_active { 2.0 } else { 1.0 }, border_col),
+                                Stroke::new(if is_active { 2.0_f32 } else { 1.0_f32 }, border_col),
                                 egui::StrokeKind::Inside,
                             );
                             if resp.clicked() {
@@ -254,8 +254,8 @@ impl EditorWindow {
                                 img_h as u32,
                                 metadata.captured_at.format("%d %b %Y %H:%M:%S")
                             ))
-                            .small()
-                            .color(Color32::from_gray(165)),
+                                .small()
+                                .color(Color32::from_gray(165)),
                         );
                         ui.separator();
 
@@ -360,8 +360,8 @@ impl EditorWindow {
                                     RichText::new(
                                         "Sharp lossless quality & preserves transparency outside Freeform cutouts. Metadata via PNG iTXt + XMP + EXIF.",
                                     )
-                                    .small()
-                                    .color(Color32::from_gray(155)),
+                                        .small()
+                                        .color(Color32::from_gray(155)),
                                 );
                             }
                             SaveFormat::Jpeg => {
@@ -375,8 +375,8 @@ impl EditorWindow {
                                     RichText::new(
                                         "Freeform transparent areas are composited over white. Metadata via EXIF + Windows Details + XMP.",
                                     )
-                                    .small()
-                                    .color(Color32::from_gray(155)),
+                                        .small()
+                                        .color(Color32::from_gray(155)),
                                 );
                             }
                         }
@@ -389,12 +389,12 @@ impl EditorWindow {
                                 "💾 Save as {}...",
                                 save_format.extension().to_ascii_uppercase()
                             ))
-                            .strong()
-                            .size(15.0)
-                            .color(Color32::WHITE),
+                                .strong()
+                                .size(15.0)
+                                .color(Color32::WHITE),
                         )
-                        .fill(Color32::from_rgb(37, 99, 235))
-                        .min_size(Vec2::new(ui.available_width(), 38.0));
+                            .fill(Color32::from_rgb(37, 99, 235))
+                            .min_size(Vec2::new(ui.available_width(), 38.0));
 
                         if ui
                             .add(save_btn)
@@ -483,7 +483,7 @@ impl EditorWindow {
                     painter.rect_stroke(
                         img_rect.expand(1.5),
                         2.0,
-                        Stroke::new(1.5, Color32::from_gray(55)),
+                        Stroke::new(1.5_f32, Color32::from_gray(55)),
                         egui::StrokeKind::Outside,
                     );
 

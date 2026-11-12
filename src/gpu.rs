@@ -267,3 +267,27 @@ fn configure_visuals(ctx: &egui::Context) {
     visuals.panel_fill = egui::Color32::from_rgb(24, 26, 32);
     ctx.set_visuals(visuals);
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_wgpu_backends_enabled() {
+        let enabled = wgpu::Instance::enabled_backend_features();
+        assert!(
+            !enabled.is_empty(),
+            "At least one native wgpu graphics backend (Metal/DX12/Vulkan/GL) must be enabled"
+        );
+        #[cfg(target_os = "macos")]
+        assert!(
+            enabled.contains(wgpu::Backends::METAL),
+            "Metal backend must be enabled on macOS"
+        );
+        #[cfg(target_os = "windows")]
+        assert!(
+            enabled.contains(wgpu::Backends::DX12) || enabled.contains(wgpu::Backends::VULKAN),
+            "DX12 or Vulkan backend must be enabled on Windows"
+        );
+    }
+}
